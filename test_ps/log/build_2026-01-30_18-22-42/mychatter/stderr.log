@@ -1,0 +1,5 @@
+  File "/home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/python3.10/site-packages/mychatter/publisher_member_function.py", line 20
+    from mychatter.msg import mydata.msg
+                                    ^
+SyntaxError: invalid syntax
+

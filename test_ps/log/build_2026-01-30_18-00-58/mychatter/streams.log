@@ -1,0 +1,29 @@
+[0.696s] Invoking command in '/home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/src/chatter': PYTHONPATH=/home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mychatter build --build-base /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/build install --record /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/install.log --single-version-externally-managed install_data
+[0.918s] running egg_info
+[0.919s] writing ../../build/mychatter/mychatter.egg-info/PKG-INFO
+[0.922s] writing dependency_links to ../../build/mychatter/mychatter.egg-info/dependency_links.txt
+[0.925s] writing entry points to ../../build/mychatter/mychatter.egg-info/entry_points.txt
+[0.927s] writing requirements to ../../build/mychatter/mychatter.egg-info/requires.txt
+[0.929s] writing top-level names to ../../build/mychatter/mychatter.egg-info/top_level.txt
+[0.934s] reading manifest file '../../build/mychatter/mychatter.egg-info/SOURCES.txt'
+[0.936s] writing manifest file '../../build/mychatter/mychatter.egg-info/SOURCES.txt'
+[0.938s] running build
+[0.938s] running build_py
+[0.940s] running install
+[0.940s] running install_lib
+[0.942s] byte-compiling /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/python3.10/site-packages/mychatter/publisher_member_function.py to publisher_member_function.cpython-310.pyc
+[0.944s]   File "/home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/python3.10/site-packages/mychatter/publisher_member_function.py", line 50
+[0.944s]     self.get_logger().info(f'Publishing: test-{name}, time-{this_time}'.)
+[0.945s]                                                                         ^
+[0.945s] SyntaxError: invalid syntax
+[0.945s] 
+[0.945s] running install_data
+[0.946s] copying resource/mychatter -> /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/share/ament_index/resource_index/packages
+[0.947s] copying package.xml -> /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/share/mychatter
+[0.950s] running install_egg_info
+[0.952s] Copying ../../build/mychatter/mychatter.egg-info to /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/python3.10/site-packages/mychatter-0.0.0-py3.10.egg-info
+[0.983s] running install_scripts
+[1.001s] Installing listener script to /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/chatter
+[1.003s] Installing talker script to /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/chatter
+[1.006s] writing list of installed files to '/home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/install.log'
+[1.022s] Invoked command in '/home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/src/chatter' returned '0': PYTHONPATH=/home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mychatter build --build-base /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/build install --record /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/install.log --single-version-externally-managed install_data

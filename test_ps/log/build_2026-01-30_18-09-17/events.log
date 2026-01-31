@@ -1,0 +1,3 @@
+[0.000000] (-) TimerEvent: {}
+[0.000119] (-) JobUnselected: {'identifier': 'mychatter'}
+[0.000149] (-) EventReactorShutdown: {}

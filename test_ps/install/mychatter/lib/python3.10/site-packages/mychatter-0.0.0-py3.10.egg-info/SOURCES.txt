@@ -1,0 +1,14 @@
+package.xml
+setup.cfg
+setup.py
+../../build/mychatter/mychatter.egg-info/PKG-INFO
+../../build/mychatter/mychatter.egg-info/SOURCES.txt
+../../build/mychatter/mychatter.egg-info/dependency_links.txt
+../../build/mychatter/mychatter.egg-info/entry_points.txt
+../../build/mychatter/mychatter.egg-info/requires.txt
+../../build/mychatter/mychatter.egg-info/top_level.txt
+../../build/mychatter/mychatter.egg-info/zip-safe
+mychatter/__init__.py
+mychatter/publisher_member_function.py
+mychatter/subscriber_member_function.py
+resource/mychatter

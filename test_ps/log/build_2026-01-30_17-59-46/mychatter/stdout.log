@@ -1,0 +1,31 @@
+running egg_info
+creating ../../build/mychatter/mychatter.egg-info
+writing ../../build/mychatter/mychatter.egg-info/PKG-INFO
+writing dependency_links to ../../build/mychatter/mychatter.egg-info/dependency_links.txt
+writing entry points to ../../build/mychatter/mychatter.egg-info/entry_points.txt
+writing requirements to ../../build/mychatter/mychatter.egg-info/requires.txt
+writing top-level names to ../../build/mychatter/mychatter.egg-info/top_level.txt
+writing manifest file '../../build/mychatter/mychatter.egg-info/SOURCES.txt'
+reading manifest file '../../build/mychatter/mychatter.egg-info/SOURCES.txt'
+writing manifest file '../../build/mychatter/mychatter.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/build
+creating /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/build/lib
+creating /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/build/lib/mychatter
+copying mychatter/__init__.py -> /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/build/lib/mychatter
+copying mychatter/publisher_member_function.py -> /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/build/lib/mychatter
+copying mychatter/subscriber_member_function.py -> /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/build/lib/mychatter
+running install
+running install_lib
+creating /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/python3.10/site-packages/mychatter
+copying /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/build/lib/mychatter/__init__.py -> /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/python3.10/site-packages/mychatter
+copying /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/build/lib/mychatter/publisher_member_function.py -> /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/python3.10/site-packages/mychatter
+copying /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/build/mychatter/build/lib/mychatter/subscriber_member_function.py -> /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/python3.10/site-packages/mychatter
+byte-compiling /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/python3.10/site-packages/mychatter/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/python3.10/site-packages/mychatter/publisher_member_function.py to publisher_member_function.cpython-310.pyc
+byte-compiling /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/lib/python3.10/site-packages/mychatter/subscriber_member_function.py to subscriber_member_function.cpython-310.pyc
+running install_data
+creating /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/share/ament_index
+creating /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/share/ament_index/resource_index
+creating /home/cc/ee106a/sp26/class/ee106a-acq/ros_workspaces/test_ps/install/mychatter/share/ament_index/resource_index/packages
