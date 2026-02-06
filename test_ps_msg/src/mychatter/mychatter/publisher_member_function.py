@@ -16,6 +16,7 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
+from my_chatter_msgs.msg import MyData
 import json
 import threading
 # This line imports the built-in string message type that our node will use to structure its data to pass on our topic
@@ -30,7 +31,7 @@ class MinimalPublisher(Node):
         super().__init__('minimal_publisher')
         
          # Here, we set that the node publishes message of type String (where did this type come from?), over a topic called "chatter_talk", and with queue size 10. The queue size limits the amount of queued messages if a subscriber doesn't receive them quickly enough.
-        self.publisher_ = self.create_publisher(String, 'chatter_talk', 10)
+        self.publisher_ = self.create_publisher(MyData, 'chatter_talk', 10)
         
         # We create a timer with a callback (a function that runs automatically when something happens so you don't have to constantly check if something has happened) 
         timer_period = 0.5  # seconds
@@ -43,21 +44,22 @@ class MinimalPublisher(Node):
 
 
         # msg.name = 'name'
-        name = input('input something\n')
+        mydata = MyData()
+        mydata.name = input('input something\n')
 
-        this_time = self.get_clock().now().to_msg().nanosec
+        mydata.stamp = self.get_clock().now().to_msg()
 
-        print(this_time)
+        print(mydata.stamp)
 
-        mydata = {"name": name, "stamp": this_time, "status": 'true'}
+        # mydata = {"name": name, "stamp": this_time, "status": 'true'}
 
-        data_str = json.dumps(mydata)
+        # data_str = json.dumps(mydata)
 
-        msg = String()
-        msg.data = data_str
+        # msg = String()
+        # msg.data = data_str
         # msg.stamp = this_time
-        self.publisher_.publish(msg)
-        self.get_logger().info(f'Publishing: name-{name}, time-{this_time}')
+        self.publisher_.publish(mydata)
+        self.get_logger().info(f'Publishing: name-{mydata.name}, time-{mydata.stamp}')
         self.i += 1
 
 
