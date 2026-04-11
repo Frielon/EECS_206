@@ -63,3 +63,5 @@ if __name__ == '__main__':
     main()
 
 
+    a = {'a': 1, 'b':2}
+    a.keys

@@ -19,6 +19,7 @@ import numpy as np
 
 from rclpy.qos import QoSProfile, ReliabilityPolicy
 
+
 class OccupancyGrid2d(Node):
     def __init__(self):
         super().__init__('occupancy_grid_2d')
