@@ -13,10 +13,14 @@ from tracker.kalman_filter import BallKalmanFilter
 
 class TrackingPipeline:
     def __init__(self, camera_matrix=None, dist_coeffs=None):
-        self.cap = cv2.VideoCapture(CAMERA_INDEX)
+        self.cap = cv2.VideoCapture(CAMERA_INDEX, cv2.CAP_AVFOUNDATION)
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH)
         self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT)
         self.cap.set(cv2.CAP_PROP_FPS, CAMERA_FPS)
+
+        # Discard initial frames so camera auto-exposure settles
+        for _ in range(30):
+            self.cap.read()
 
         self.camera_matrix = camera_matrix
         self.dist_coeffs = dist_coeffs
@@ -76,6 +80,7 @@ class TrackingPipeline:
         if detection is not None and markers_ok:
             u, v, radius = detection
             result['ball_pixel'] = (u, v)
+            result['ball_radius'] = radius
 
             # Step 4: Transform to table coordinates
             table_pos = self.table.pixel_to_table(u, v)
@@ -137,7 +142,8 @@ class TrackingPipeline:
 
         if result['ball_pixel'] is not None:
             u, v = result['ball_pixel']
-            cv2.circle(frame, (int(u), int(v)), 10, (0, 255, 0), 2)
+            r = int(result.get('ball_radius', 10))
+            cv2.circle(frame, (int(u), int(v)), r, (0, 255, 0), 2)
 
         # Display text info
         info_lines = [

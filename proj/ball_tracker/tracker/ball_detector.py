@@ -31,15 +31,23 @@ class BallDetector:
         if not contours:
             return None
 
-        # Pick the largest contour
-        largest = max(contours, key=cv2.contourArea)
-        ((u, v), radius) = cv2.minEnclosingCircle(largest)
+        # Filter contours by circularity and pick the most circular one
+        best = None
+        best_circularity = 0
+        for c in contours:
+            area = cv2.contourArea(c)
+            perimeter = cv2.arcLength(c, True)
+            if perimeter == 0:
+                continue
+            circularity = 4 * np.pi * area / (perimeter * perimeter)
+            ((u, v), radius) = cv2.minEnclosingCircle(c)
+            if radius < BALL_MIN_RADIUS_PX or radius > BALL_MAX_RADIUS_PX:
+                continue
+            if circularity > best_circularity:
+                best_circularity = circularity
+                best = (float(u), float(v), float(radius))
 
-        # Validate size
-        if radius < BALL_MIN_RADIUS_PX or radius > BALL_MAX_RADIUS_PX:
-            return None
-
-        return (float(u), float(v), float(radius))
+        return best
 
     def tune_hsv(self, camera_index=0):
         """
@@ -48,10 +56,14 @@ class BallDetector:
         """
         import threading
 
-        cap = cv2.VideoCapture(camera_index)
+        cap = cv2.VideoCapture(camera_index, cv2.CAP_AVFOUNDATION)
         if not cap.isOpened():
             print(f"ERROR: Cannot open camera {camera_index}")
             return
+
+        # Discard initial frames so camera auto-exposure settles
+        for _ in range(30):
+            cap.read()
 
         # Create window with trackbars
         cv2.namedWindow("Controls", cv2.WINDOW_NORMAL)

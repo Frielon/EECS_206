@@ -1,10 +1,10 @@
 import numpy as np
 
-# --- Camera ---
-CAMERA_INDEX = 0             # /dev/video0, or a path to video file
+# --- Camera (Intel RealSense via AVFoundation) ---
+CAMERA_INDEX = 0
 CAMERA_WIDTH = 640
 CAMERA_HEIGHT = 480
-CAMERA_FPS = 60               # Request 60 FPS if hardware supports it
+CAMERA_FPS = 30
 
 # --- ArUco Markers ---
 ARUCO_DICT_NAME = "DICT_4X4_50"
@@ -21,8 +21,8 @@ MARKER_POSITIONS_TABLE = {
 
 # --- Ball Detection (HSV thresholds) ---
 # Tune these for your specific ball color and lighting
-BALL_HSV_LOWER = np.array([14, 148, 165])    # orange ball example
-BALL_HSV_UPPER = np.array([19, 255, 255])
+BALL_HSV_LOWER = np.array([33, 67, 97])    # orange ball
+BALL_HSV_UPPER = np.array([86, 255, 255])
 BALL_MIN_RADIUS_PX = 5        # ignore detections smaller than this
 BALL_MAX_RADIUS_PX = 80
 
@@ -33,4 +33,4 @@ KF_PROCESS_NOISE = 5.0
 KF_MEASUREMENT_NOISE = 2.0
 
 # --- Control Output ---
-CONTROL_LOOP_HZ = 60
+CONTROL_LOOP_HZ = 30
