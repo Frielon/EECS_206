@@ -29,7 +29,7 @@ def controller_callback(result):
 def main():
     # Load calibration if available
     try:
-        data = np.load("calibration/calibration_data.npz")
+        data = np.load("/home/cc/ee106a/sp26/class/ee106a-acq/proj/EECS_206/proj/ball_tracker/calibration/calibration_data.npz")
         camera_matrix = data['camera_matrix']
         dist_coeffs = data['dist_coeffs']
         print("Loaded camera calibration")

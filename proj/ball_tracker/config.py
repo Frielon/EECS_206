@@ -1,7 +1,7 @@
 import numpy as np
 
 # --- Camera (Intel RealSense via AVFoundation) ---
-CAMERA_INDEX = 0
+CAMERA_INDEX = 10
 CAMERA_WIDTH = 640
 CAMERA_HEIGHT = 480
 CAMERA_FPS = 30

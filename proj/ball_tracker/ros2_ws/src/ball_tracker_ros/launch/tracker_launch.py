@@ -6,7 +6,7 @@ from launch.substitutions import LaunchConfiguration
 
 def generate_launch_description():
     return LaunchDescription([
-        DeclareLaunchArgument('camera_index', default_value='0'),
+        DeclareLaunchArgument('camera_index', default_value='10'),
         DeclareLaunchArgument('camera_width', default_value='640'),
         DeclareLaunchArgument('camera_height', default_value='480'),
         DeclareLaunchArgument('camera_fps', default_value='60'),

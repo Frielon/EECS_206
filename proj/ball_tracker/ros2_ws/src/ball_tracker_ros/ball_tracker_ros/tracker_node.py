@@ -9,7 +9,13 @@ import sys
 import os
 
 # Add the ball_tracker package root to path so we can import config & tracker modules
-BALL_TRACKER_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', '..'))
+# Navigate from ros2_ws (found via environment or known structure) up to ball_tracker/
+_THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+# Walk up until we find ros2_ws, then go one level above it
+_d = _THIS_DIR
+while os.path.basename(_d) != 'ros2_ws' and _d != '/':
+    _d = os.path.dirname(_d)
+BALL_TRACKER_ROOT = os.path.dirname(_d)  # parent of ros2_ws = ball_tracker/
 sys.path.insert(0, BALL_TRACKER_ROOT)
 
 from config import (
