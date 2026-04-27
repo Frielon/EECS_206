@@ -27,10 +27,16 @@ BALL_MIN_RADIUS_PX = 5        # ignore detections smaller than this
 BALL_MAX_RADIUS_PX = 80
 
 # --- Kalman Filter ---
-# Process noise (how much we expect the ball to accelerate between frames)
-KF_PROCESS_NOISE = 5.0
+# Process noise = std-dev of UNMODELED acceleration (mm/s^2). Gravity-induced
+# acceleration is modeled directly via plate tilt, so this only needs to absorb
+# slip, friction, and angle backlash. Was 5.0 under the constant-velocity model.
+KF_PROCESS_NOISE = 1.0
 # Measurement noise (how much we trust the camera measurement)
 KF_MEASUREMENT_NOISE = 2.0
+
+# --- Ball Dynamics (used by the tilt-aware Kalman filter) ---
+GRAVITY_MM_S2  = 9810.0       # gravitational acceleration, mm/s^2
+ROLLING_FACTOR = 5.0 / 7.0    # solid sphere rolling without slip; 1.0 = sliding
 
 # --- Control Output ---
 CONTROL_LOOP_HZ = 30

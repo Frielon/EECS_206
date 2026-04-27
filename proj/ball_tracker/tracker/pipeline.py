@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from config import CAMERA_INDEX, CAMERA_WIDTH, CAMERA_HEIGHT, CAMERA_FPS
 from tracker.table_frame import TableFrame
 from tracker.ball_detector import BallDetector
-from tracker.kalman_filter import BallKalmanFilter
+from tracker.kalman_filter import BallKalmanFilter, tilt_to_accel
 
 
 class TrackingPipeline:
@@ -29,7 +29,19 @@ class TrackingPipeline:
         self.ball = BallDetector()
         self.kf = BallKalmanFilter(dt=1.0 / CAMERA_FPS)
 
+        # Latest commanded plate tilt (radians). Updated by the controller via
+        # set_plate_angles(); fed to the KF as a control input each frame.
+        self.plate_angles = (0.0, 0.0)
+
         self.prev_time = time.time()
+
+    def set_plate_angles(self, theta_x, theta_y):
+        """
+        Tell the tracker the current commanded plate tilt (radians). Call this
+        from your controller whenever the command changes; the KF uses it to
+        predict gravity-induced acceleration between frames.
+        """
+        self.plate_angles = (float(theta_x), float(theta_y))
 
     def undistort(self, frame):
         """Remove lens distortion if calibration data is available."""
@@ -53,10 +65,10 @@ class TrackingPipeline:
         dt = now - self.prev_time
         self.prev_time = now
 
-        # Update Kalman dt if frame rate varies
-        self.kf.dt = dt
-        self.kf.F[0, 2] = dt
-        self.kf.F[1, 3] = dt
+        # Feed the latest commanded plate tilt into the KF as a control input.
+        # Gravity is now modeled deterministically; Q only handles slip/friction.
+        a_x, a_y = tilt_to_accel(*self.plate_angles)
+        self.kf.set_control(a_x, a_y)
 
         result = {
             'ball_found': False,
@@ -92,7 +104,7 @@ class TrackingPipeline:
                 if not self.kf.initialized:
                     self.kf.reset(x, y)
                 else:
-                    self.kf.predict()
+                    self.kf.predict(dt=dt)
                     self.kf.update(x, y)
 
                 result['ball_found'] = True
@@ -100,8 +112,8 @@ class TrackingPipeline:
                 result['velocity'] = self.kf.get_velocity()
 
         elif self.kf.initialized:
-            # Ball not detected: predict only (coasts on last velocity)
-            self.kf.predict()
+            # Ball not detected: predict only (coasts on last velocity + tilt).
+            self.kf.predict(dt=dt)
             result['position'] = self.kf.get_position()
             result['velocity'] = self.kf.get_velocity()
 
